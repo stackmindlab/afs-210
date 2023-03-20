@@ -20,3 +20,5 @@ class Stack:
         if self.isEmpty():
             return None
         return self.items[-1]
+
+class Queue
