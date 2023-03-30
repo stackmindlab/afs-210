@@ -28,10 +28,10 @@ class DoublyLinkedList:
     def addFirst(self, data) -> None:
         # Add a node at the front of the list
         new_node = Node(data)
+        self.count += 1
         if(self.head == None):
             self.head = new_node
             self.tail = new_node
-            self.count += 1
         else:
             new_node.next = self.head
             self.head.prev = new_node
@@ -58,13 +58,12 @@ class DoublyLinkedList:
             return
         elif index == 0:
             self.addFirst(data)
-        elif  index > self.count:
+        elif  index == self.count:
             self.addLast(data)
-            return
         else:
             new_node = Node(data)
             curr = self.head
-            for i in range(1, index -1):
+            for i in range(0, index):
                 curr = curr.next
             new_node.prev = curr
             new_node.next = curr.next
@@ -166,13 +165,13 @@ class DoublyLinkedList:
 
 # Store the items in the list below in the order they are listed and then print the list
 words = DoublyLinkedList()
-words.addLast("May")
-words.addLast("the")
-words.addLast("Force")
-words.addLast("be")
-words.addLast("with")
-words.addLast("you")
-words.addLast("!")
+words.add("May")
+words.add("the")
+words.add("Force")
+words.add("be")
+words.add("with")
+words.add("you")
+words.add("!")
 
 # Print the list with print(words)
 print(words)
@@ -182,14 +181,12 @@ index = words.indexOf("with")
 print(index)
 
 # Change "you" into "us" on the List
-words[5] = "us"
+words[words.indexOf("you")] = "us"
 
 # Add "all" before "!" on the list
-words.addAtIndex("all", 7)
+words.addAtIndex("all", words.indexOf("!")-1)
 
 # Print the list
 print(words)
-
-
 
 
